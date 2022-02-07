@@ -1,0 +1,14 @@
+@import "./variables.css";
+@import "./fonts-register.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
