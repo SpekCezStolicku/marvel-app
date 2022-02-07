@@ -1,13 +1,57 @@
 <template>
-  <div></div>
+  <nav>
+    <!-- LOGO -->
+    <img class="logo" src="../assets/Marvel-logo.svg" alt="Marvel logo" />
+
+    <!-- CONTAINER LINK -->
+    <div class="container-link">
+      <router-link
+        class="link"
+        v-for="(route, index) in routes"
+        :key="index"
+        :to="route.link"
+        >{{ route.name }}</router-link
+      >
+    </div>
+
+    <!-- BANNER -->
+    <img class="banner" src="../assets/bg-banner.jpg" alt="Heroes banner" />
+  </nav>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {};
+<script setup>
+const routes = [
+  {
+    name: "search",
+    link: "/",
   },
-};
+  {
+    name: "favorites",
+    link: "/favorites",
+  },
+];
 </script>
 
-<style scoped></style>
+<style scoped>
+.logo {
+  max-width: 150px;
+}
+.container-link {
+  margin: 1em;
+}
+.link {
+  margin: 1em;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--snow);
+  text-decoration: none;
+}
+.banner {
+  width: 100%;
+  height: auto;
+}
+.router-link-exact-active {
+  border-bottom: solid var(--red);
+}
+</style>
