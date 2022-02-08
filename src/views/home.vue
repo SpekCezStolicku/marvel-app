@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <SearchBar />
-    <HeroCard />
+    <div class="hero-result-container d-flex">
+      <HeroCard class="d-flex" />
+    </div>
   </div>
 </template>
 
@@ -15,3 +17,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.hero-result-container {
+  flex-wrap: wrap;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+</style>
