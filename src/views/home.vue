@@ -2,7 +2,7 @@
   <div class="container">
     <SearchBar />
     <div class="hero-result-container d-flex">
-      <HeroCard class="d-flex" />
+      <HeroCard />
     </div>
   </div>
 </template>
@@ -20,8 +20,9 @@ export default {
 
 <style>
 .hero-result-container {
+  margin: auto;
   flex-wrap: wrap;
-  align-items: stretch !important;
-  align-content: stretch !important;
+  justify-content: center;
+  align-items: center;
 }
 </style>

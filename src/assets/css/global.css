@@ -12,3 +12,30 @@
   align-content: center;
   justify-content: center;
 }
+/* SCROLLBAR CUSTOMIZE */
+
+/* SCROLLBAR CUSTOM */
+
+::-webkit-scrollbar {
+  width: 12px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    transparent,
+    var(--red),
+    var(--red),
+    var(--red),
+    transparent
+  );
+  border-radius: 6px;
+}
+.bg-dark {
+  background: var(--dark);
+}
+.page {
+  min-width: 100%;
+  min-height: 100vh;
+  background: var(--dark);
+}
