@@ -10,7 +10,7 @@ import NavBar from "./components/NavBar.vue";
 <style>
 @import "./assets/css/global.css";
 #app {
-  min-width: 100vw;
+  min-width: 100%;
   min-height: 100vh;
   font-family: "Roboto-Condensed-Regular", Helvetica, Arial;
   -webkit-font-smoothing: antialiased;

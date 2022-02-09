@@ -49,7 +49,7 @@ const routes = [
 }
 .banner {
   max-width: 100vw;
-  width: 100%;
+  width: auto;
   height: auto;
 }
 .router-link-exact-active {

@@ -13,6 +13,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "favorites" */ "../views/favorites.vue"),
   },
+  {
+    path: "/:catchAll(.*)",
+    name: "404",
+    component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
+  },
 ];
 
 const router = createRouter({

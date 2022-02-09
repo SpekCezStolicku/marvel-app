@@ -23,7 +23,7 @@ export default {
   created() {
     axios({
       method: "get",
-      url: "https://gateway.marvel.com/v1/public/characters?ts=12a&apikey=67d5b80b6246066e65409141d355a52a&hash=1676ffca6f2911e555cfb849a1f64c18",
+      url: "https://gateway.marvel.com/v1/public/characters?nameStartsWith=s&limit=24&ts=12a&apikey=67d5b80b6246066e65409141d355a52a&hash=1676ffca6f2911e555cfb849a1f64c18",
     })
       .then((response) => {
         this.heroes = response.data.data.results;
