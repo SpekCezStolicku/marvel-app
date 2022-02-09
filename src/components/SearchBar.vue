@@ -2,15 +2,41 @@
   <!-- SEARCH BAR -->
   <div class="search-wrapper d-flex">
     <!-- INPUT -->
-    <input autofocus type="text" placeholder="Search a hero by name" />
+    <input
+      autofocus
+      v-model="searchValue"
+      type="text"
+      placeholder="Search a hero by name"
+    />
     <!-- BUTTON -->
-    <button>
+    <button @click="addSearchString(this.searchValue)">
       <img src="../assets/search-icon.svg" alt="Search Icon" />
     </button>
   </div>
 </template>
-
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      searchValue: "",
+      recentSearch: [],
+    };
+  },
+  methods: {
+    addSearchString(newSearch) {
+      this.recentSearch.push(newSearch);
+    },
+  },
+  watch: {
+    recentSearch: {
+      handler() {
+        localStorage.setItem("recentSearch", JSON.stringify(this.recentSearch));
+      },
+      deep: true,
+    },
+  },
+};
+</script>
 
 <style scoped>
 .search-wrapper {
@@ -39,5 +65,10 @@ button {
   border-top-right-radius: var(--b-radius);
   border-bottom-right-radius: var(--b-radius);
   cursor: pointer;
+}
+h3 {
+  z-index: 10000;
+  color: red;
+  font-size: 3em;
 }
 </style>
