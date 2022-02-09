@@ -1,28 +1,30 @@
 <template>
-  <div class="container">
+  <div>
     <SearchBar />
-    <div class="hero-result-container d-flex">
-      <HeroCard />
-    </div>
+    <HeroList :title="title" />
+    <RecentSearch v-if="notEmptyStorage" />
   </div>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
-import HeroCard from "../components/reusable/HeroCard.vue";
+import RecentSearch from "../components/RecentSearch.vue";
+import HeroList from "../components/reusable/HeroList.vue";
 export default {
   components: {
     SearchBar,
-    HeroCard,
+    RecentSearch,
+    HeroList,
+  },
+  data() {
+    return {
+      title: "Meet new heroes",
+    };
+  },
+  computed: {
+    notEmptyStorage() {
+      return localStorage.getItem("recentSearch");
+    },
   },
 };
 </script>
-
-<style>
-.hero-result-container {
-  margin: auto;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-</style>

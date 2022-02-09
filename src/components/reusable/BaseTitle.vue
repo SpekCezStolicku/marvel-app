@@ -17,7 +17,11 @@ export default {
 
 <style scoped>
 h1 {
+  text-align: left;
   font-size: 2em;
-  border-bottom: 3px solid var(--red);
+  border-bottom: 4px solid var(--red);
+}
+div {
+  padding: 1em 2.5%;
 }
 </style>

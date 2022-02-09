@@ -24,7 +24,9 @@ export default {
   },
   methods: {
     addSearchString(newSearch) {
-      this.recentSearch.push(newSearch);
+      if (newSearch.length >= 3) {
+        this.recentSearch.push(newSearch);
+      }
     },
   },
   watch: {
