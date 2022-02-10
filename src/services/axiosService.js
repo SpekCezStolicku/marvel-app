@@ -1,16 +1,24 @@
 import axios from "axios";
 
+// CREATED SINGLE AXIOS INSTANCE
 const apiClient = axios.create({
-  baseURL:
-    "https://gateway.marvel.com:443/v1/public/characters?apikey=77aa894d3cb1683544a162adf42ebeea853274a9",
-  withCredentials: false,
-  Params: {
-    apikey: "77aa894d3cb1683544a162adf42ebeea853274a9",
+  baseURL: "https://gateway.marvel.com/v1/public",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
+  timeout: 10000,
 });
+// REUSABLE PARAM STRING FOR CHARACTERS
+const paramSecure =
+  "/characters?ts=12a&apikey=67d5b80b6246066e65409141d355a52a&hash=1676ffca6f2911e555cfb849a1f64c18&limit=24&";
 
+// SINGLE CALLS WITH SPECIFIC ACTION
 export default {
-  getHero() {
-    return apiClient.get();
+  getRandomHero(offset) {
+    return apiClient.get(paramSecure + "offset=" + offset);
+  },
+  getHeroByName(name) {
+    return apiClient.get(paramSecure + "nameStartsWith=" + name);
   },
 };

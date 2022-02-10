@@ -1,6 +1,10 @@
 <template>
   <!-- HERO CARD -->
-  <div class="card" v-for="(hero, index) in heroes" :key="index">
+  <div
+    class="card"
+    v-for="(hero, index) in search.searchRandomResult"
+    :key="index"
+  >
     <!-- THUMBNAIL -->
     <img
       class="thumbnail"
@@ -13,24 +17,24 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      heroes: null,
-    };
+  computed: {
+    ...mapState(["search", "searchRandomResult"]),
+    offsetRandomNumber() {
+      return Math.floor(Math.random() * this.totalResults) + 1;
+    },
   },
   created() {
-    axios({
-      method: "get",
-      url: "https://gateway.marvel.com/v1/public/characters?nameStartsWith=s&limit=24&ts=12a&apikey=67d5b80b6246066e65409141d355a52a&hash=1676ffca6f2911e555cfb849a1f64c18",
-    })
-      .then((response) => {
-        this.heroes = response.data.data.results;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch("randomSearch");
+    // axiosService
+    //   .getRandomHero(this.offsetRandomNumber)
+    //   .then((response) => {
+    //     this.heroes = response.data.data.results;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
 };
 </script>
