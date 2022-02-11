@@ -1,10 +1,6 @@
 <template>
   <!-- HERO CARD -->
-  <div
-    class="card"
-    v-for="(hero, index) in search.searchRandomResult"
-    :key="index"
-  >
+  <div class="card" v-for="(hero, index) in search" :key="index">
     <!-- THUMBNAIL -->
     <img
       class="thumbnail"
@@ -17,24 +13,12 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
-  computed: {
-    ...mapState(["search", "searchRandomResult"]),
-    offsetRandomNumber() {
-      return Math.floor(Math.random() * this.totalResults) + 1;
+  props: {
+    search: {
+      type: Array,
+      require: false,
     },
-  },
-  created() {
-    this.$store.dispatch("randomSearch");
-    // axiosService
-    //   .getRandomHero(this.offsetRandomNumber)
-    //   .then((response) => {
-    //     this.heroes = response.data.data.results;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   },
 };
 </script>
@@ -67,7 +51,7 @@ export default {
   width: 300px;
 }
 h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: var(--snow);
 }
 </style>

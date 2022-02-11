@@ -9,7 +9,7 @@
       placeholder="Search a hero by name"
     />
     <!-- BUTTON -->
-    <button @click="addSearchString(this.searchValue)">
+    <button @click="startSearch()">
       <img src="../assets/search-icon.svg" alt="Search Icon" />
     </button>
   </div>
@@ -23,10 +23,15 @@ export default {
     };
   },
   methods: {
-    addSearchString(newSearch) {
-      if (newSearch.length >= 3) {
-        this.recentSearch.push(newSearch);
+    addLastSearching() {
+      if (this.searchValue.length >= 3) {
+        this.recentSearch.push(this.searchValue);
       }
+    },
+    startSearch() {
+      this.$store.dispatch("heroesSearch", this.searchValue);
+      this.addLastSearching();
+      this.searchValue = "";
     },
   },
   watch: {

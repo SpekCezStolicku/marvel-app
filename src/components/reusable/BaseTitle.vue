@@ -18,7 +18,7 @@ export default {
 <style scoped>
 h1 {
   text-align: left;
-  font-size: 2em;
+  font-size: 2.25em;
   border-bottom: 4px solid var(--red);
 }
 div {
