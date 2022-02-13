@@ -3,7 +3,7 @@ import axiosService from "../../services/axiosService";
 export const state = {
   searchResult: [],
   searchRandomResult: [],
-  totalResults: 1535, // logic: allMarvelHeroes - limit = totalResults
+  totalResults: 1535, // logic: allMarvelHeroes - displayLimit = totalResults
   offset: null,
 };
 export const mutations = {
@@ -16,7 +16,7 @@ export const mutations = {
 };
 export const actions = {
   randomSearch({ state, commit }) {
-    state.offset = Math.floor(Math.random() * state.totalResults) + 1; //Generate random numbers up to totalResult
+    state.offset = Math.floor(Math.random() * state.totalResults) + 1; //Generates random numbers up to totalResult
     return axiosService
       .getRandomHero(state.offset)
       .then((response) => {

@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import * as search from "./modules/search";
+import * as profile from "./modules/profile";
 
 export default createStore({
   state: {
@@ -10,9 +11,8 @@ export default createStore({
       limit: 24,
     },
   },
-  mutations: {},
-  actions: {},
   modules: {
     search,
+    profile,
   },
 });

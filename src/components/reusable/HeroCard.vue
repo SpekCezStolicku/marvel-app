@@ -1,6 +1,11 @@
 <template>
   <!-- HERO CARD -->
-  <div class="card" v-for="(hero, index) in search" :key="index">
+  <router-link
+    class="card"
+    v-for="(hero, index) in search"
+    :key="index"
+    :to="{ name: 'heroProfile', params: { id: hero.id } }"
+  >
     <!-- THUMBNAIL -->
     <img
       class="thumbnail"
@@ -9,7 +14,7 @@
     />
     <!-- HERO NAME -->
     <h3>{{ hero.name }}</h3>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -18,6 +23,11 @@ export default {
     search: {
       type: Array,
       require: false,
+    },
+    methods: {
+      goToProfile() {
+        this.$router.push("/profile/546455465");
+      },
     },
   },
 };
@@ -28,9 +38,9 @@ export default {
   transition: all 0.3s ease;
   margin: 0.3em;
   cursor: pointer;
+  text-decoration: none;
 }
 .card:hover {
-  filter: grayscale(0);
   transform: scale(1.05);
   transition: all 0.4s ease;
 }

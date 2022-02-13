@@ -18,6 +18,13 @@ const routes = [
     name: "404",
     component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
   },
+  {
+    path: "/profile/:id",
+    name: "heroProfile",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "heroProfile" */ "../views/heroProfile.vue"),
+  },
 ];
 
 const router = createRouter({
