@@ -6,10 +6,11 @@
     />
     <!-- LIST OF SEARCHED HEROES -->
     <div class="hero-result-container d-flex">
-      <HeroCard :search="search.searchResult" />
+      <HeroCard v-if="!loading" :search="search.searchResult" />
     </div>
+    <Loading v-if="search.loading" />
     <!-- LIST OF RANDOM GENERATED HEROES -->
-    <BaseTitle :title="title" />
+    <BaseTitle v-if="search.searchRandomResult.length > 0" :title="title" />
     <div class="hero-result-container d-flex">
       <HeroCard :search="search.searchRandomResult" />
     </div>
@@ -20,10 +21,12 @@
 import BaseTitle from "./BaseTitle.vue";
 import HeroCard from "./HeroCard.vue";
 import { mapState } from "vuex";
+import Loading from "./Loading.vue";
 export default {
   components: {
     BaseTitle,
     HeroCard,
+    Loading,
   },
   data() {
     return {
@@ -37,7 +40,11 @@ export default {
     },
   },
   computed: {
-    ...mapState(["search", "searchRandomResult"], ["search", "searchResult"]),
+    ...mapState(
+      ["search", "searchRandomResult"],
+      ["search", "searchResult"],
+      ["search", "loading"]
+    ),
   },
   created() {
     this.$store.dispatch("randomSearch");
