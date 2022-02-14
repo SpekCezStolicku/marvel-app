@@ -9,7 +9,7 @@ const apiClient = axios.create({
   },
   timeout: 10000,
 });
-// REUSABLE PARAM STRING FOR CHARACTERS
+// REUSABLE PARAM STRING FOR CHARACTERS. I KNOW... THIS IS NOT CORRECT WAY
 const paramSecure =
   "characters?ts=12a&apikey=67d5b80b6246066e65409141d355a52a&hash=1676ffca6f2911e555cfb849a1f64c18&limit=24&";
 
@@ -21,6 +21,7 @@ export default {
   getHeroByName(name) {
     return apiClient.get(paramSecure + "nameStartsWith=" + name);
   },
+  // NOT IN USE... FOR NOW
   getHeroId(id) {
     return apiClient.get(
       "characters/" +

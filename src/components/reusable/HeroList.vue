@@ -4,9 +4,11 @@
       v-if="search.searchResult.length > 0"
       :title="this.resultTitle"
     />
+    <!-- LIST OF SEARCHED HEROES -->
     <div class="hero-result-container d-flex">
       <HeroCard :search="search.searchResult" />
     </div>
+    <!-- LIST OF RANDOM GENERATED HEROES -->
     <BaseTitle :title="title" />
     <div class="hero-result-container d-flex">
       <HeroCard :search="search.searchRandomResult" />

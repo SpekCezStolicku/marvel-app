@@ -1,11 +1,17 @@
 <template>
   <div>
+
+      <!-- PROFILE TITLE -->
     <h1>{{ heroObject.name }}'s profile</h1>
+
+    <!-- HERO CARD -->
     <div class="hero d-flex">
       <img
         :src="heroObject.thumbnail.path + '.' + heroObject.thumbnail.extension"
         :alt="heroObject.name"
       />
+
+      <!-- ABOUT HERO SECTION -->
       <div class="about">
         <h3>
           Name:
@@ -13,6 +19,8 @@
         </h3>
         <p>Story: {{ heroStory }}</p>
         <p>Comics: {{ heroObject.comics.available }}</p>
+
+        <!-- ACTION BUTTONS  -->
         <div class="action-bar d-flex">
           <button>Set hero favorite</button>
           <p>or <span @click="$router.go(-1)">return back</span></p>
@@ -28,6 +36,9 @@ export default {
   props: ["id"],
   computed: {
     ...mapState(["search", "searchRandomResult"], ["search", "searchResult"]),
+    // WE HAVE 2 OPTIONS FROM STATE. GET DATA FROM RANDOM RESULT OR SEARCH RESULT
+    // FUNCTION CHOOSE CORRECT STATE SOURCE BASED ON SPECIFIED HERO ID
+    // THEN FILTER SINGLE HERO OBJECT FROM STORED ARRAY OF HEROES OBJECTS
     heroObject() {
       if (this.search.searchRandomResult.find((hero) => hero.id == this.id)) {
         return this.search.searchRandomResult.find(
@@ -37,6 +48,7 @@ export default {
         return this.search.searchResult.find((h) => h.id == this.id);
       }
     },
+    // IF WE HAVE NO DESCRIPTION FROM API, USE THIS WISE SENTENCE :) 
     heroStory() {
       return this.heroObject.description.length > 10
         ? this.heroObject.description
@@ -44,6 +56,7 @@ export default {
     },
   },
   methods: {
+    //   DISPATCH ACTION WITH CURRENT HERO OBJECT AS PAYLOAD
     setFavorite() {
       this.$store.dispatch("favoriteHeroObject", this.heroObject);
     },

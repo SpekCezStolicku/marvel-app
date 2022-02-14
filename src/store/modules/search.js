@@ -7,6 +7,7 @@ export const state = {
   offset: null,
 };
 export const mutations = {
+  // 2 FUNCTIONS ALMOST SAME ...facepalm
   GET_RANDOM_RESULT(state, res) {
     state.searchRandomResult = res.data.data.results;
   },
@@ -15,6 +16,7 @@ export const mutations = {
   },
 };
 export const actions = {
+  // GET RANDOM 24 HEROES OBJECTS FROM API AND SAVED TO THE STATE
   randomSearch({ state, commit }) {
     state.offset = Math.floor(Math.random() * state.totalResults) + 1; //Generates random numbers up to totalResult
     return axiosService
@@ -26,6 +28,7 @@ export const actions = {
         console.log(error);
       });
   },
+  // CALL API AND GET HEROES BY NAME
   heroesSearch({ commit }, heroName) {
     return axiosService
       .getHeroByName(heroName)

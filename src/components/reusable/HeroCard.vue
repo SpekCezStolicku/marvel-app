@@ -24,11 +24,6 @@ export default {
       type: Array,
       require: false,
     },
-    methods: {
-      goToProfile() {
-        this.$router.push("/profile/546455465");
-      },
-    },
   },
 };
 </script>
