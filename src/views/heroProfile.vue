@@ -145,7 +145,8 @@ strong {
   h3 {
     font-size: 1.5em;
   }
-  p {
+  p,
+  button {
     font-size: 1em;
   }
 }

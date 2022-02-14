@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <BaseTitle
       v-if="search.searchResult.length > 0"
       :title="this.resultTitle"
@@ -44,3 +44,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media only screen and (max-width: 450px) {
+  .container {
+    margin-top: 2.5em;
+  }
+}
+</style>
