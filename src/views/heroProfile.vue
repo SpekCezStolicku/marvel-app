@@ -50,8 +50,10 @@ export default {
         return this.search.searchRandomResult.find(
           (hero) => hero.id == this.id
         );
-      } else {
+      } else if (this.search.searchResult.find((h) => h.id == this.id)) {
         return this.search.searchResult.find((h) => h.id == this.id);
+      } else {
+        return this.profile.favoriteHeroes.find((o) => o.id == this.id);
       }
     },
     // IF WE HAVE NO DESCRIPTION FROM API, USE THIS WISE SENTENCE :)
