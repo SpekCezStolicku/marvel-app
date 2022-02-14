@@ -2,7 +2,11 @@
   <div>
     <h1>Your favorite heroes</h1>
     <div class="hero-result-container d-flex">
-      <HeroCard :search="profile.favoriteHeroes" />
+      <HeroCard
+        v-if="profile.favoriteHeroes.length > 0"
+        :search="profile.favoriteHeroes"
+      />
+      <h3 v-else>You have no favorite hero. Shame...</h3>
     </div>
   </div>
 </template>
