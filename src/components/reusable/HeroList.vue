@@ -44,13 +44,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.hero-result-container {
-  margin: auto;
-  padding: 2em 0;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-</style>

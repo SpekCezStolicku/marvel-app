@@ -1,7 +1,6 @@
 <template>
   <div>
-
-      <!-- PROFILE TITLE -->
+    <!-- PROFILE TITLE -->
     <h1>{{ heroObject.name }}'s profile</h1>
 
     <!-- HERO CARD -->
@@ -20,9 +19,15 @@
         <p>Story: {{ heroStory }}</p>
         <p>Comics: {{ heroObject.comics.available }}</p>
 
+        <p>
+          Your Favorite: <strong>{{ isFavoriteObject }}</strong>
+        </p>
+
         <!-- ACTION BUTTONS  -->
         <div class="action-bar d-flex">
-          <button>Set hero favorite</button>
+          <button @click="setFavorite" :class="{ disabledButton: favorite }">
+            Set hero favorite
+          </button>
           <p>or <span @click="$router.go(-1)">return back</span></p>
         </div>
       </div>
@@ -36,7 +41,8 @@ export default {
   props: ["id"],
   computed: {
     ...mapState(["search", "searchRandomResult"], ["search", "searchResult"]),
-    // WE HAVE 2 OPTIONS FROM STATE. GET DATA FROM RANDOM RESULT OR SEARCH RESULT
+    ...mapState(["profile", "favoriteHeroes"]),
+    // WE HAVE 3 OPTIONS FROM STATE. GET DATA FROM RANDOM RESULT ARRAY, FAVORITE HERO LIST ARRAY OR SEARCH RESULT ARRAY
     // FUNCTION CHOOSE CORRECT STATE SOURCE BASED ON SPECIFIED HERO ID
     // THEN FILTER SINGLE HERO OBJECT FROM STORED ARRAY OF HEROES OBJECTS
     heroObject() {
@@ -48,18 +54,29 @@ export default {
         return this.search.searchResult.find((h) => h.id == this.id);
       }
     },
-    // IF WE HAVE NO DESCRIPTION FROM API, USE THIS WISE SENTENCE :) 
+    // IF WE HAVE NO DESCRIPTION FROM API, USE THIS WISE SENTENCE :)
     heroStory() {
       return this.heroObject.description.length > 10
         ? this.heroObject.description
         : "No one cares about the story of this hero. How sad...";
     },
+    isFavoriteObject() {
+      if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
+        return "This hero is already your favorite";
+      } else return "This hero is not your favorite";
+    },
   },
   methods: {
-    //   DISPATCH ACTION WITH CURRENT HERO OBJECT AS PAYLOAD
+    //   COMMIT MUTATION WITH CURRENT HERO OBJECT AS PAYLOAD
     setFavorite() {
-      this.$store.dispatch("favoriteHeroObject", this.heroObject);
+      this.$store.commit("ADD_FAVORITE", this.heroObject);
+      this.favorite = true;
     },
+  },
+  data() {
+    return {
+      favorite: false,
+    };
   },
 };
 </script>
@@ -107,5 +124,14 @@ span {
 span:hover {
   transition: all 0.3s ease;
   color: var(--red);
+}
+.disabledButton {
+  transition: all 0.2s ease;
+  cursor: not-allowed;
+  background: grey;
+  color: black;
+}
+strong {
+  padding: 0 0.5em;
 }
 </style>

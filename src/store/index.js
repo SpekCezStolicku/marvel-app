@@ -13,6 +13,12 @@ export default createStore({
       hash: "1676ffca6f2911e555cfb849a1f64c18",
       limit: 24,
     },
+    loading: false,
+  },
+  mutations: {
+    LOADING(state) {
+      state.loading = !state.loading;
+    },
   },
   modules: {
     search,
