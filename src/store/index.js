@@ -1,6 +1,9 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import * as search from "./modules/search";
 import * as profile from "./modules/profile";
+
+const persistState = createPersistedState();
 
 export default createStore({
   state: {
@@ -15,4 +18,5 @@ export default createStore({
     search,
     profile,
   },
+  plugins: [persistState],
 });
