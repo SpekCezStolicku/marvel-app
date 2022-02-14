@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- PROFILE TITLE -->
-    <h1>{{ heroObject.name }}'s profile</h1>
+    <h1 class="title">{{ heroObject.name }}'s profile</h1>
 
     <!-- HERO CARD -->
     <div class="hero d-flex">
@@ -86,11 +86,6 @@ img {
   width: 500px;
   margin: 0 2em;
 }
-h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin: 1em 0;
-}
 h3 {
   font-size: 1.8em;
 }
@@ -133,5 +128,23 @@ span:hover {
 }
 strong {
   padding: 0 0.5em;
+}
+@media only screen and (max-width: 450px) {
+  img {
+    width: 250px;
+  }
+  .hero {
+    display: block;
+  }
+  .about {
+    max-width: 100%;
+    margin: 1em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  p {
+    font-size: 1em;
+  }
 }
 </style>

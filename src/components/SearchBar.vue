@@ -73,9 +73,19 @@ button {
   border-bottom-right-radius: var(--b-radius);
   cursor: pointer;
 }
-h3 {
-  z-index: 10000;
-  color: red;
-  font-size: 3em;
+
+@media only screen and (max-width: 1100px) {
+  input {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  input {
+    font-size: 0.9em;
+  }
+  .search-wrapper {
+    position: relative;
+    top: 1.75em;
+  }
 }
 </style>

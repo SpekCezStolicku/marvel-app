@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Your favorite heroes</h1>
+    <h1 class="title">Your favorite heroes</h1>
     <div class="hero-result-container d-flex">
       <HeroCard
         v-if="profile.favoriteHeroes.length > 0"
@@ -23,11 +23,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin: 1em 0;
-}
-</style>

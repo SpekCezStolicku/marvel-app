@@ -55,4 +55,9 @@ const routes = [
 .router-link-exact-active {
   border-bottom: solid var(--red);
 }
+@media only screen and (max-width: 450px) {
+  .banner {
+    display: none;
+  }
+}
 </style>

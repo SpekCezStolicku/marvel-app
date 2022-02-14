@@ -59,4 +59,13 @@ h3 {
   font-size: 1.2em;
   color: var(--snow);
 }
+@media only screen and (max-width: 1100px) {
+  .thumbnail {
+    width: 250px;
+    height: 200px;
+  }
+  h3 {
+    font-size: 1em;
+  }
+}
 </style>
