@@ -29,4 +29,12 @@ p {
   border-radius: 25px;
   margin: 0 2em 1em 2em;
 }
+.chip-container {
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 450px) {
+  p {
+    font-size: 0.8em;
+  }
+}
 </style>

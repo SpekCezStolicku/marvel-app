@@ -59,5 +59,17 @@ const routes = [
   .banner {
     display: none;
   }
+  .link {
+    margin: 0.5em;
+    font-size: 0.9em;
+  }
+  .logo {
+    max-width: 100px;
+  }
+  nav {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
 }
 </style>

@@ -140,6 +140,26 @@ span:hover {
 strong {
   padding: 0 0.5em;
 }
+@media only screen and (max-width: 1000px) {
+  img {
+    width: auto;
+  }
+  h3 {
+    font-size: 1.4em;
+  }
+  .hero {
+    flex-wrap: wrap;
+  }
+  .about {
+    margin: 1em;
+    max-width: 100%;
+    margin: 2em;
+  }
+  p,
+  button {
+    font-size: 1em;
+  }
+}
 @media only screen and (max-width: 450px) {
   img {
     width: 250px;
@@ -149,14 +169,6 @@ strong {
   }
   .about {
     max-width: 100%;
-    margin: 1em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  p,
-  button {
-    font-size: 1em;
   }
 }
 </style>

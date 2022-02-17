@@ -81,11 +81,12 @@ button {
 }
 @media only screen and (max-width: 450px) {
   input {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   .search-wrapper {
     position: relative;
     top: 1.75em;
+    margin-bottom: 2em;
   }
 }
 </style>

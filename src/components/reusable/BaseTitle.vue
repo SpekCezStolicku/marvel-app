@@ -30,4 +30,10 @@ div {
     padding: 0 0.5em;
   }
 }
+@media only screen and (max-width: 450px) {
+  h1 {
+    font-size: 1.5em;
+    padding: 0 0.5em;
+  }
+}
 </style>
