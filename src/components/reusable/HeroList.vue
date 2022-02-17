@@ -4,6 +4,7 @@
       v-if="search.searchResult.length > 0"
       :title="this.resultTitle"
     />
+    <h1 v-else>Your hero was not found</h1>
     <!-- LIST OF SEARCHED HEROES -->
     <div class="hero-result-container d-flex">
       <HeroCard v-if="!loading" :search="search.searchResult" />
@@ -53,6 +54,9 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 2em;
+}
 @media only screen and (max-width: 450px) {
   .container {
     margin-top: 2.5em;
