@@ -71,7 +71,7 @@ export default {
     //   COMMIT MUTATION WITH CURRENT HERO OBJECT AS PAYLOAD
     setFavorite() {
       this.$store.commit("ADD_FAVORITE", this.heroObject);
-      this.favorite = true;
+      this.isFavoriteObject();
     },
     isFavoriteObject() {
       if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
