@@ -1,8 +1,8 @@
 <template>
   <div>
     <SearchBar />
-    <HeroList :title="title" />
     <RecentSearch v-if="notEmptyStorage" />
+    <HeroList :title="title" />
   </div>
 </template>
 
