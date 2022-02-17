@@ -4,7 +4,7 @@
       v-if="search.searchResult.length > 0"
       :title="this.resultTitle"
     />
-    <h1 v-else>Your hero was not found</h1>
+    <h1 v-if="search.firstSearch">Your hero was not found</h1>
     <!-- LIST OF SEARCHED HEROES -->
     <div class="hero-result-container d-flex">
       <HeroCard v-if="!loading" :search="search.searchResult" />
@@ -44,7 +44,7 @@ export default {
     ...mapState(
       ["search", "searchRandomResult"],
       ["search", "searchResult"],
-      ["search", "loading"]
+      ["search", "firstSearch"][("search", "loading")]
     ),
   },
   created() {

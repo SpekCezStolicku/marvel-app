@@ -6,6 +6,7 @@ export const state = {
   totalResults: 1535, // logic: allMarvelHeroes - displayLimit = totalResults
   offset: null,
   loading: true,
+  firstSearch: false,
 };
 export const mutations = {
   // 2 FUNCTIONS ALMOST SAME ...facepalm
@@ -17,6 +18,12 @@ export const mutations = {
   },
   LOADING(state, bool) {
     state.loading = bool;
+  },
+  NO_RESULT(state, condition) {
+    state.firstSearch = condition;
+  },
+  CLEAN_SEARCH_HISTORY(state) {
+    state.searchResult = [];
   },
 };
 export const actions = {
@@ -38,11 +45,18 @@ export const actions = {
   // CALL API AND GET HEROES BY NAME
   heroesSearch({ commit }, heroName) {
     commit("LOADING", true);
+    commit("CLEAN_SEARCH_HISTORY");
+    commit("NO_RESULT", false);
     return axiosService
       .getHeroByName(heroName)
       .then((response) => {
-        commit("GET_HEROES_RESULT", response);
-        commit("LOADING", false);
+        if (response.data.data.results.length > 0) {
+          commit("GET_HEROES_RESULT", response);
+          commit("LOADING", false);
+        } else {
+          commit("NO_RESULT", true);
+          commit("LOADING", false);
+        }
       })
       .catch((error) => {
         console.log(error);
