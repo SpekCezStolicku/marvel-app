@@ -20,12 +20,16 @@
         <p>Comics: {{ heroObject.comics.available }}</p>
 
         <p>
-          Your Favorite: <strong>{{ isFavoriteObject }}</strong>
+          Your Favorite: <strong>{{ notificationFavorite }}</strong>
         </p>
 
         <!-- ACTION BUTTONS  -->
         <div class="action-bar d-flex">
-          <button @click="setFavorite" :class="{ disabledButton: favorite }">
+          <button
+            @click="setFavorite"
+            :class="{ disabledButton: favorite }"
+            :disabled="favorite"
+          >
             Set hero favorite
           </button>
           <p>or <span @click="$router.go(-1)">return back</span></p>
@@ -62,11 +66,6 @@ export default {
         ? this.heroObject.description
         : "No one cares about the story of this hero. How sad...";
     },
-    isFavoriteObject() {
-      if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
-        return "This hero is already your favorite";
-      } else return "This hero is not your favorite";
-    },
   },
   methods: {
     //   COMMIT MUTATION WITH CURRENT HERO OBJECT AS PAYLOAD
@@ -74,11 +73,21 @@ export default {
       this.$store.commit("ADD_FAVORITE", this.heroObject);
       this.favorite = true;
     },
+    isFavoriteObject() {
+      if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
+        this.favorite = true;
+        this.notificationFavorite = "This hero is already your favorite";
+      } else this.notificationFavorite = "This is not your favorite hero yet";
+    },
   },
   data() {
     return {
       favorite: false,
+      notificationFavorite: "",
     };
+  },
+  mounted() {
+    this.isFavoriteObject();
   },
 };
 </script>
