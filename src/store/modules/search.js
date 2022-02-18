@@ -5,7 +5,7 @@ export const state = {
   searchRandomResult: [],
   totalResults: 1535, // logic: allMarvelHeroes - displayLimit = totalResults
   offset: null,
-  loading: true,
+  loading: false,
   firstSearch: false,
 };
 export const mutations = {

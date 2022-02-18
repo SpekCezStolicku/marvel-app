@@ -20,17 +20,29 @@
         <p>Comics: {{ heroObject.comics.available }}</p>
 
         <p>
-          Your Favorite: <strong>{{ notificationFavorite }}</strong>
+          Your Favorite:
+          <transition name="fate" appear>
+            <strong>{{ notificationFavorite }}</strong>
+          </transition>
         </p>
 
         <!-- ACTION BUTTONS  -->
         <div class="action-bar d-flex">
           <button
+            class="active"
             @click="setFavorite"
-            :class="{ disabledButton: favorite }"
+            :class="{ disabledButton: favorite, active: !favorite }"
             :disabled="favorite"
           >
             Set hero favorite
+          </button>
+          <button
+            class="active"
+            @click="removeFavorite"
+            v-if="favorite"
+            :class="{ disabledButton: !favorite, active: favorite }"
+          >
+            Remove from favorite
           </button>
           <p>or <span @click="$router.go(-1)">return back</span></p>
         </div>
@@ -66,6 +78,9 @@ export default {
         ? this.heroObject.description
         : "No one cares about the story of this hero. How sad...";
     },
+    getHeroIndex() {
+      return this.profile.favoriteHeroes.findIndex((o) => o.id == this.id);
+    },
   },
   methods: {
     //   COMMIT MUTATION WITH CURRENT HERO OBJECT AS PAYLOAD
@@ -78,6 +93,14 @@ export default {
         this.favorite = true;
         this.notificationFavorite = "This hero is already your favorite";
       } else this.notificationFavorite = "This is not your favorite hero yet";
+    },
+    removeFavorite() {
+      if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
+        this.profile.favoriteHeroes.splice(this.getHeroIndex, 1);
+        this.favorite = false;
+        return (this.notificationFavorite =
+          "This hero is not your friend anymore");
+      }
     },
   },
   data() {
@@ -107,7 +130,7 @@ h3 {
 p {
   font-size: 1.3em;
 }
-button {
+.active {
   padding: 0.5em 1.5em;
   font-size: 1.1em;
   margin: 1.5em 0.8em;
@@ -116,11 +139,14 @@ button {
   border: 0;
   cursor: pointer;
   box-shadow: 1px 1px 5px black;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
-button:hover {
+.active:hover {
   box-shadow: 2px 2px 10px black;
   transition: all 0.3s ease;
+}
+.action-bar {
+  flex-wrap: wrap;
 }
 span {
   cursor: pointer;
@@ -138,6 +164,7 @@ span:hover {
   color: black;
 }
 strong {
+  transition: all 0.2s ease-in-out;
   padding: 0 0.5em;
 }
 @media only screen and (max-width: 1000px) {

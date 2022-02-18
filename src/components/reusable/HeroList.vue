@@ -22,12 +22,10 @@
 import BaseTitle from "./BaseTitle.vue";
 import HeroCard from "./HeroCard.vue";
 import { mapState } from "vuex";
-import Loading from "./Loading.vue";
 export default {
   components: {
     BaseTitle,
     HeroCard,
-    Loading,
   },
   data() {
     return {
@@ -44,7 +42,8 @@ export default {
     ...mapState(
       ["search", "searchRandomResult"],
       ["search", "searchResult"],
-      ["search", "firstSearch"][("search", "loading")]
+      ["search", "firstSearch"],
+      ["search", "loading"]
     ),
   },
   created() {

@@ -14,11 +14,6 @@ export default createStore({
       limit: 24,
     },
   },
-  mutations: {
-    LOADING(state, bool) {
-      state.loading = bool;
-    },
-  },
   modules: {
     search,
     profile,
