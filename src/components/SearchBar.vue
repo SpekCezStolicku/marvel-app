@@ -1,6 +1,6 @@
 <template>
   <!-- SEARCH BAR -->
-  <div class="search-wrapper d-flex">
+  <form @submit.prevent="startSearch()" class="search-wrapper d-flex">
     <!-- INPUT -->
     <input
       autofocus
@@ -12,7 +12,7 @@
     <button @click="startSearch()">
       <img src="../assets/search-icon.svg" alt="Search Icon" />
     </button>
-  </div>
+  </form>
 </template>
 <script>
 export default {

@@ -21,11 +21,13 @@
 <script>
 import BaseTitle from "./BaseTitle.vue";
 import HeroCard from "./HeroCard.vue";
+import Loading from "./Loading.vue";
 import { mapState } from "vuex";
 export default {
   components: {
     BaseTitle,
     HeroCard,
+    Loading,
   },
   data() {
     return {

@@ -38,7 +38,7 @@
           </button>
           <button
             class="active"
-            @click="removeFavorite"
+            @click="beforeRemove"
             v-if="favorite"
             :class="{ disabledButton: !favorite, active: favorite }"
           >
@@ -95,12 +95,17 @@ export default {
       } else this.notificationFavorite = "This is not your favorite hero yet";
     },
     removeFavorite() {
-      if (this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
+      if (
+        this.profile.favoriteHeroes.find((o) => o.id == this.id) &&
+        this.favorite === false
+      ) {
         this.profile.favoriteHeroes.splice(this.getHeroIndex, 1);
-        this.favorite = false;
-        return (this.notificationFavorite =
-          "This hero is not your friend anymore");
       }
+    },
+    beforeRemove() {
+      this.favorite = false;
+      return (this.notificationFavorite =
+        "This hero is not your friend anymore");
     },
   },
   data() {
@@ -111,6 +116,9 @@ export default {
   },
   mounted() {
     this.isFavoriteObject();
+  },
+  beforeUnmount() {
+    this.removeFavorite();
   },
 };
 </script>
