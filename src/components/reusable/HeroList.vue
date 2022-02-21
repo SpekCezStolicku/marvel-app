@@ -7,7 +7,7 @@
     <h1 v-if="search.firstSearch">Your hero was not found</h1>
     <!-- LIST OF SEARCHED HEROES -->
     <div class="hero-result-container d-flex">
-      <HeroCard v-if="!loading" :search="search.searchResult" />
+      <HeroCard v-if="!search.loading" :search="search.searchResult" />
     </div>
     <Loading v-if="search.loading" />
     <!-- LIST OF RANDOM GENERATED HEROES -->
