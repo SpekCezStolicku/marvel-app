@@ -103,16 +103,9 @@ export default {
       }
     },
     beforeRemove() {
-      if (!this.profile.favoriteHeroes.find((o) => o.id == this.id)) {
-        this.favorite = false;
-        return (this.notificationFavorite =
-          "This hero is not your friend anymore");
-      } else {
-        this.favorite = false;
-        this.removeFavorite();
-        return (this.notificationFavorite =
-          "This hero is not your friend anymore");
-      }
+      this.favorite = false;
+      return (this.notificationFavorite =
+        "This hero is not your friend anymore");
     },
   },
   data() {
@@ -126,6 +119,7 @@ export default {
   },
   beforeUnmount() {
     this.removeFavorite();
+    this.$store.commit("REMOVE_DUPLICATE");
   },
 };
 </script>
